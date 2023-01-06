@@ -7,6 +7,6 @@ In this version, the Mongo primary replica will initiate the replica and initial
 5.  Restart the mongod daemons with the replica set, key files and other flags like bind_ip_all
 Other replicas will proceed straight away to Step 5.
 
-The only other code change is made to the Flask frontend app.py, where the the @app.before_first_request is dropped.
+The only other code change is made to the Flask frontend app.py, where the the @app.before_first_request hook is dropped.
 
 The deployment procedure is exactly the same as my ealier repo, https://github.com/snpsuen/URLShortenStateful. Just use the docker image urlshortenstateful:v2 and kubectl apply -f the yaml manifests from THIS repo.
