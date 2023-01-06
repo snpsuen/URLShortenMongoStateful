@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: urlshortenstateful-deployment
+  labels:
+    app: urlshortenstateful
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: urlshortenstateful
+  template:
+    metadata:
+      labels:
+        app: urlshortenstateful
+    spec:
+      containers:
+      - name: urlshortenstateful
+        image: snpsuen/urlshortenstateful:v2
+        # imagePullPolicy: Never
+        ports:
+        - containerPort: 5005
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: urlshortenstateful-service
+spec:
+  selector:
+    app: urlshortenstateful
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5005
+  type: LoadBalancer
