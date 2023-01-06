@@ -7,7 +7,7 @@ data:
     #!/bin/bash
     if [ "${HOSTNAME}" == "mongostate-0" ]
     then
-      echo "Primary starting initial mongod ..."
+      echo "Primary forking child mongod ..."
       mongod --replSet RepSet --keyFile /var/mongosecret/keyfile --fork --logpath /var/log/mongodb/fork_initial.log
       echo "Waiting for secondary to come up ..."
       mongosh mongodb://mongostate-1.mongostate-headless.default.svc.cluster.local:27017 -eval="exit"
@@ -27,7 +27,7 @@ data:
       db.createUser({user: 'tester', pwd: 'testing', roles: [{ role: 'readWrite', db: 'statetest' }]})
       db.createCollection('urlmap')
     EOF
-      echo "Primary shutting down initial mongod ..."
+      echo "Primary shutting down child mongod ..."
       mongod --shutdown
     fi
     echo "Starting final mongod ..."
