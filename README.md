@@ -9,6 +9,6 @@ Other replicas will proceed straight away to Step 5.
 
 The only other code change is made to the Flask frontend app.py, where the the @app.before_first_request is dropped.
 
-The deployment procedure is exactly the same as my ealier repo, https://github.com/snpsuen/URLShortenStateful.
+The deployment procedure is exactly the same as my ealier repo, https://github.com/snpsuen/URLShortenStateful. Just use the docker image urlshortenstateful:v1 and kubectl apply -f the yaml manifests in THIS repo.
 
 
