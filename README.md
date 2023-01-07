@@ -8,6 +8,6 @@ In this version, the Mongo primary replica will initiate the replica and initial
 
 Other replicas will proceed straight away to Step 5. More specifically, the initialisation script is defined via a K8s config map that will be mounted as /docker-entrypoint-initdb.d/mongostate-init.sh by the Mongo stateful pods. Please refer to the config map manifest for details, https://github.com/snpsuen/URLShortenMongoStateful/blob/main/manifest/mongostate-configmap.yaml
 
-The only other code change occurred to the Flask frontend app.py, where the the @app.before_first_request hook has been dropped.
+The only other code change occurs to the Flask frontend app.py, where the the @app.before_first_request hook is dropped.
 
-The deployment procedure is exactly the same as my earlier repo, https://github.com/snpsuen/URLShortenStateful. Just use the docker image urlshortenstateful:v2 and kubectl apply -f the yaml manifests from THIS repo.
+The deployment procedure is exactly the same as my earlier repo, https://github.com/snpsuen/URLShortenStateful. Just use the docker image urlshortenstateful:v2 and kubectl apply -f the yaml manifests from THIS repo, (/manifest)
