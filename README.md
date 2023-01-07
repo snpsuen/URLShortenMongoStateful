@@ -6,7 +6,7 @@ In this version, the Mongo primary replica will initiate the replica and initial
 4.  Shut down the child mongo daemon
 5.  Start the main process of a mongod daemon with the replica set, key files and other flags like bind_ip_all 
 
-Other replicas will proceed straight away to Step 5. More specifically, the initialisation script is defined via a K8s config map that will be mounted as /docker-entrypoint-initdb.d/mongostate-init.sh by the Mongo stateful pods. Please refer to the config map manifest for details, https://github.com/snpsuen/URLShortenMongoStateful/blob/main/manifest/mongostate-configmap.yaml
+Other replicas will proceed straight away to Step 5. More specifically, the initialisation script is defined via a K8s config map that will be mounted as /docker-entrypoint-initdb.d/mongostate-init.sh by the Mongo stateful pods. Please refer to the [config map manifest](https://github.com/snpsuen/URLShortenMongoStateful/blob/main/manifest/mongostate-configmap.yaml) for details, 
 
 The only other code change occurs to the Flask frontend app.py, where the the @app.before_first_request hook is dropped.
 
